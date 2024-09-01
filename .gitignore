@@ -3,3 +3,7 @@
 /README.md
 /.idea
 /pytest_cache/
+/allure-results
+/allureress
+/screenshots
+__pycache__

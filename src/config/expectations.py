@@ -36,6 +36,13 @@ class Wait:
             print(f"Ожидание {timeout / 1000} секунд не завершено, элемент не виден.")
 
     @staticmethod
+    def hidden(locator, timeout=W10s):
+        try:
+            Wait._page.wait_for_selector(locator, state="attached", timeout=timeout)
+        except TimeoutError:
+            print(f"Ожидание {timeout / 1000} секунд не завершено, элемент не виден.")
+
+    @staticmethod
     def load_state(page: Page, timeout=W10s):
         try:
             page.wait_for_load_state(state="load", timeout=timeout)
