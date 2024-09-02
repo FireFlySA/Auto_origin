@@ -13,12 +13,14 @@ def page() -> Page:
         yield page
         browser.close()
 
+
 def get_browser(playwright) -> Browser:
     browser_type = playwright.chromium if PlaywrightConfig.BROWSER == 'chrome' else playwright.firefox
     return browser_type.launch(
         headless=PlaywrightConfig.IS_HEADLESS,
         slow_mo=PlaywrightConfig.SLOW_MO
     )
+
 
 @pytest.fixture(scope='function')
 def practice_form(page: Page) -> PracticeFormPage:

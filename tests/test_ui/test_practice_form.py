@@ -5,7 +5,6 @@ from base.pages.practice_form.practice_form_page import PracticeFormPage
 from base.pages.practice_form.practice_start import PracticeStart
 from conftest import practice_form
 
-
 class TestPractice:
 
     @allure.epic("Тесты потока 1")

@@ -4,6 +4,6 @@
 /.idea
 /pytest_cache/
 /allure-results
-/allureress
-/screenshots
+*/**/allureress
+*/**/screenshots
 __pycache__
