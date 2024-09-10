@@ -5,5 +5,7 @@
 /pytest_cache/
 /allure-results
 */**/allureress
-*/**/screenshots
+/allureress
+/src/screenshots
+/src/downloads
 __pycache__

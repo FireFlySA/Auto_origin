@@ -1,6 +1,11 @@
 import pytest
 
+from base.pages.button.button_page import ButtonPage
+from base.pages.elements_text_box.text_box_page import TextBoxPage
 from base.pages.practice_form.practice_form_page import PracticeFormPage
+from base.pages.radio_button.radio_button_page import RadioButtonPage
+from base.pages.select_menu.select_menu_page import SelectMenuPage
+from base.pages.upload_and_download.upload_and_download_page import UploadAndDownloadPage
 from src.config.playwright import PlaywrightConfig
 from playwright.sync_api import Page, sync_playwright, Browser
 
@@ -25,3 +30,23 @@ def get_browser(playwright) -> Browser:
 @pytest.fixture(scope='function')
 def practice_form(page: Page) -> PracticeFormPage:
     return PracticeFormPage(page)
+
+@pytest.fixture(scope='function')
+def elements_text_box(page: Page) -> TextBoxPage:
+    return TextBoxPage(page)
+
+@pytest.fixture(scope='function')
+def elements_radio_button(page: Page) -> RadioButtonPage:
+    return RadioButtonPage(page)
+
+@pytest.fixture(scope='function')
+def elements_button(page: Page) -> ButtonPage:
+    return ButtonPage(page)
+
+@pytest.fixture(scope='function')
+def select_menu(page: Page) -> SelectMenuPage:
+    return SelectMenuPage(page)
+
+@pytest.fixture(scope='function')
+def upload_form(page: Page) -> UploadAndDownloadPage:
+    return UploadAndDownloadPage(page)

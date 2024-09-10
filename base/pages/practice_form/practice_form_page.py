@@ -43,14 +43,7 @@ class PracticeFormPage:
         self.Wait_state = '//*[@id="state"]'
         self.Wait_city = '//*[@id="city"]'
         self.Wait_submit = '//*[@id="submit"]'
-        self.Wait_result = '//*[@class="modal-dialog"]'
+        self.Wait_result = '//*[@class="modal-content"]'
 
-    def datapicker_fill(self):
-        self.data_picker.click()
-        Wait.visible(self.Wait_data_picker_months)
-        self.data_picker_months.select_option('May')
-        self.data_picker_year.select_option('1991')
-        self.data_picker_day.click()
-        Wait.hidden(self.Wait_data_picker_months)
 
 

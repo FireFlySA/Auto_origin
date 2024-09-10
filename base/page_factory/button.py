@@ -1,8 +1,10 @@
+import os
 import time
 
 import allure
 
 from base.page_factory.component import Component
+from settings import BASE_DIR
 
 
 class Button(Component):
@@ -53,3 +55,19 @@ class Button(Component):
         with allure.step(f'Проверка видимости {self.type_of} с именем "{self.name}"'):
             locator = self.get_locator(**kwargs)
             return locator.is_visible()
+
+    def right_click(self, **kwargs):
+        """
+        Нажатие на правую кнопку мыши.
+        """
+        with allure.step(f'Нажати правой кнопкой мыши {self.type_of} с именем "{self.name}"'):
+            locator = self.get_locator(**kwargs)
+            locator.click(button='right')
+
+    def download_file(self, **kwargs):
+        with allure.step(f'Скачивание файла из кнопки "{self.name}"'):
+            with self.page.expect_download() as download_info:
+                locator = self.get_locator(**kwargs)
+                locator.click()
+            download = download_info.value
+            download.save_as(os.path.join(BASE_DIR, "src", "downloads", download.suggested_filename))

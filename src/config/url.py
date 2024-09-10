@@ -11,3 +11,4 @@ class Url:
     BROKEN = DOMAIN + 'broken'
     UPLOAD_DOWNLOAD = DOMAIN + 'upload-download'
     DYNAMIC_PROPERTIES = DOMAIN + 'dynamic-properties'
+    SELECT_MENU = DOMAIN + 'select-menu'
