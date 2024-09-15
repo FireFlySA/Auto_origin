@@ -4,7 +4,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class Settings:
     @property
-    def base_url(self) -> str:
+    def base_url_api(self) -> str:
         """
         Возвращает основной URL для API.
 

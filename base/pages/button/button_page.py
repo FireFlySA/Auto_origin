@@ -10,4 +10,4 @@ class ButtonPage:
         """Локаторы страницы: Кнопки"""
         self.double_click = Button(page, locator='//*[@id="doubleClickBtn"]', name='Двойной клик')
         self.right_click = Button(page, locator='//*[@id="rightClickBtn"]', name='Клик правой кнопкой мыши')
-        self.click = page.locator('(//*[starts-with(@class, "mt-4")])[position()=2]').get_by_text('Click me')
+        self.click = page.locator('(//*[starts-with(@class, "btn")])').get_by_text("Click Me", exact=True)

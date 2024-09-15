@@ -29,3 +29,15 @@ class AuthorizationMethod:
     @staticmethod
     def upload(page: Page):
         BasePage.open_page(page, Url.UPLOAD_DOWNLOAD)
+
+    @staticmethod
+    def modal_dialogs(page: Page):
+        BasePage.open_page(page, Url.MODAL_DIALOGS)
+
+    @staticmethod
+    def data_picker(page: Page):
+        BasePage.open_page(page, Url.DATE_PICKER)
+
+    @staticmethod
+    def check_box_page(page: Page):
+        BasePage.open_page(page, Url.CHECK_BOX)

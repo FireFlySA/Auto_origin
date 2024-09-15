@@ -21,7 +21,7 @@ class MethodsAuthorized:
         В случае успешной авторизации, результат валидации добавляется в отчет Allure и выводится в консоль.
         Если авторизация не удалась, тест завершится с ошибкой, и информация об этом также будет включена в отчет Allure.
         """
-        auth_base = AuthBase(username="MakeyStar", password="23MakeyStar23!/")
+        auth_base = AuthBase(username="Firefly_SA", password="4752583Aa!")
 
         with allure.step("Формирование данных и отправка запроса"):
             data, url = auth_base.form_request_data(auth_base.get_authorized_endpoint())
@@ -48,7 +48,7 @@ class MethodsAuthorized:
         включая сгенерированный токен. Если запрос на генерацию токена не удался, тест завершится с ошибкой, и информация
         об этом также будет включена в отчет Allure.
         """
-        auth_base = AuthBase(username="MakeyStar", password="23MakeyStar23!/")
+        auth_base = AuthBase(username="Firefly_SA", password="4752583Aa!")
 
         with allure.step("Формирование данных и отправка запроса"):
             data, url = auth_base.form_request_data(auth_base.get_generate_token_endpoint())
@@ -56,3 +56,30 @@ class MethodsAuthorized:
 
         with allure.step("Валидация ответа"):
             auth_base.validate_response(response, auth_base.validate_token_response)
+
+    @staticmethod
+    @allure.step("Создание юзера через POST /Account/v1/User")
+    def post_user_register():
+        """
+        Метод для регистрации пользователя через POST-запрос на эндпоинт /Account/v1/User.
+
+        Этот метод используется для регистрации пользователя, используя предоставленные имя пользователя и пароль.
+        В процессе выполнения метода происходит несколько шагов:
+
+        1. Создается экземпляр класса `AuthBase`, где задаются параметры авторизации (имя пользователя и пароль).
+        2. Формируются данные для запроса и полный URL для регистрации.
+        3. Выполняется отправка POST-запроса на сервер с предоставленными данными.
+        4. Выполняется валидация ответа сервера, проверяется успешность регистрации пользователя.
+
+        В случае успешного получения токена, результат валидации добавляется в отчет Allure и выводится в консоль,
+        включая сгенерированный токен. Если запрос на генерацию токена не удался, тест завершится с ошибкой, и информация
+        об этом также будет включена в отчет Allure.
+        """
+        auth_base = AuthBase(username="Firefly_SA11213123", password="752583Aa!ds412")
+
+        with allure.step("Формирование данных и отправка запроса"):
+            data, url = auth_base.form_request_data(auth_base.get_user_register_endpoint())
+            response = auth_base.send_post_request(data, url)
+
+        with allure.step("Валидация ответа"):
+            auth_base.validate_response(response, auth_base.validate_user_register_response)

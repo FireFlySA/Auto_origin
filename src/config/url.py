@@ -12,3 +12,6 @@ class Url:
     UPLOAD_DOWNLOAD = DOMAIN + 'upload-download'
     DYNAMIC_PROPERTIES = DOMAIN + 'dynamic-properties'
     SELECT_MENU = DOMAIN + 'select-menu'
+    MODAL_DIALOGS = DOMAIN + 'modal-dialogs'
+    DATE_PICKER = DOMAIN + 'date-picker'
+    CHECK_BOX = DOMAIN + 'checkbox'

@@ -1,7 +1,10 @@
 import pytest
 
 from base.pages.button.button_page import ButtonPage
+from base.pages.check_box.check_box_page import CheckBoxPage
+from base.pages.data_picker.data_picker_page import DataPickerPage
 from base.pages.elements_text_box.text_box_page import TextBoxPage
+from base.pages.modal_dialogs.modal_dialogs_page import ModalDialogsPage
 from base.pages.practice_form.practice_form_page import PracticeFormPage
 from base.pages.radio_button.radio_button_page import RadioButtonPage
 from base.pages.select_menu.select_menu_page import SelectMenuPage
@@ -50,3 +53,15 @@ def select_menu(page: Page) -> SelectMenuPage:
 @pytest.fixture(scope='function')
 def upload_form(page: Page) -> UploadAndDownloadPage:
     return UploadAndDownloadPage(page)
+
+@pytest.fixture(scope='function')
+def elements_modal_dialogs(page: Page) -> ModalDialogsPage:
+    return ModalDialogsPage(page)
+
+@pytest.fixture(scope='function')
+def elements_data_picker(page: Page) -> DataPickerPage:
+    return DataPickerPage(page)
+
+@pytest.fixture(scope='function')
+def check_box_form(page: Page) -> CheckBoxPage:
+    return CheckBoxPage(page)

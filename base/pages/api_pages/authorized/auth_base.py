@@ -3,6 +3,7 @@ import requests
 
 from base.models_api_pydantic.auth.model_auth_v1 import AuthorizedResponseSuccess, AuthorizedResponseError
 from base.models_api_pydantic.auth.model_post_v1_token_generate import GenerateTokenResponse
+from base.models_api_pydantic.auth.model_post_v1_user_register import UserRegisterResponse
 from settings import Settings
 
 
@@ -26,7 +27,7 @@ class AuthBase:
             "accept": "application/json",
             "Content-Type": "application/json"
         }
-        self.base_url = Settings().base_url
+        self.base_url = Settings().base_url_api
 
     def get_authorized_endpoint(self):
         """
@@ -43,6 +44,14 @@ class AuthBase:
         :return: Строка с полным URL для генерации токена пользователя.
         """
         return f"{self.base_url}/Account/v1/GenerateToken"
+
+    def get_user_register_endpoint(self):
+        """
+        Возвращает полный URL для выполнения POST-запроса регистрации пользователя.
+
+        :return: Строка с полным URL для регистрации пользователя.
+        """
+        return f"{self.base_url}/Account/v1/User"
 
     @allure.step("Формирование данных для запроса")
     def form_request_data(self, endpoint):
@@ -128,6 +137,26 @@ class AuthBase:
             name="Валидация успешного ответа",
             attachment_type=allure.attachment_type.TEXT)
 
+    @allure.step("Валидация успешного ответа регистрации")
+    def validate_user_register_response(self, response):
+        """
+        Валидирует успешный ответ сервера для запроса регистрации пользователя.
+
+        :param response: Объект ответа от сервера.
+
+        Метод проверяет, что поле "Code" в ответе равно "201". В случае успеха
+        в консоль выводится сообщение успешной регистрации пользователя. Также добавляется
+        запись в Allure-отчёт с деталями успешного ответа, включая токен, дату истечения,
+        статус и результат.
+        """
+        json = response.json()
+        result = UserRegisterResponse.parse_obj(json)
+        print(f"Пользователь успешно сгенерирован: {result.userID}")
+        allure.attach(
+            f"Пользователь: {result.username}\nUserId: {result.userID}\nРезультат: {result}",
+            name="Валидация успешного ответа",
+            attachment_type=allure.attachment_type.TEXT)
+
     @allure.step("Валидация ошибки")
     def validate_error_response(self, response):
         """
@@ -158,9 +187,9 @@ class AuthBase:
         и Allure-отчёт, после чего тест завершается с ошибкой.
         """
         with allure.step("Проверка статуса и валидация ответа"):
-            if response.status_code == 200:
+            if response.status_code == 200 or response.status_code == 201:
                 success_validator(response)
-                print("Тест успешен: Статус код 200")
+                print(f"Тест успешен: Статус код: {response.status_code}")
             else:
                 print(f"Неожиданный статус ответа: {response.status_code}")
                 print(f"Ответ сервера: {response.text}")
