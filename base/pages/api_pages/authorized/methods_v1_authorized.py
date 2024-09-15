@@ -75,7 +75,7 @@ class MethodsAuthorized:
         включая сгенерированный токен. Если запрос на генерацию токена не удался, тест завершится с ошибкой, и информация
         об этом также будет включена в отчет Allure.
         """
-        auth_base = AuthBase(username="Firefly_SA11213123", password="752583Aa!ds412")
+        auth_base = AuthBase(username="Firefly_SA$", password="752583Aa!ds4121")
 
         with allure.step("Формирование данных и отправка запроса"):
             data, url = auth_base.form_request_data(auth_base.get_user_register_endpoint())

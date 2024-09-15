@@ -1,19 +1,19 @@
 from datetime import datetime
 from typing import List
 
-from pydantic import BaseModel, StrictStr, UUID4
+from pydantic import BaseModel, StrictStr, StrictInt, UUID4
 
 
 class Books (BaseModel):
-    isbn: str
-    title: str
-    subTitle: str
-    author: str
+    isbn: StrictStr
+    title: StrictStr
+    subTitle: StrictStr
+    author: StrictStr
     publish_date: datetime
-    publisher:str
-    pages: int
-    description:str
-    website: str
+    publisher:StrictStr
+    pages: StrictInt
+    description:StrictStr
+    website: StrictStr
 
 
 class UserRegisterResponse(BaseModel):
@@ -23,7 +23,7 @@ class UserRegisterResponse(BaseModel):
 
 
 class UserRegisterResponseError(BaseModel):
-    code: int
+    code: StrictInt
     message: StrictStr
 
 
